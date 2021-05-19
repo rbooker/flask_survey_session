@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block title %}Question {{question_num + 1}}{% endblock %}
+{% block content %}
+<h1>Question {{question_num + 1}}</h1>
+<h3>{{question.question}}</h3>
+<form action="/answer" method="POST">
+{% for choice in question.choices %}
+<input type="radio" name="answer" value="{{choice}}" {%if loop.first%}checked{%endif%}>
+{{choice}}
+{% endfor %}
+<p><button>Continue</button></p>
+</form>
+{% endblock %}
